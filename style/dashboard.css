@@ -16,6 +16,10 @@
 	width: 100%;
 }
 
+.done > div > div {
+	vertical-align: top;
+}
+
 .flipper:after, .done:after, .info .flag:before, .info .flag:after {
 	content: '';
 }
