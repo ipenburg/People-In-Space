@@ -1,9 +1,3 @@
-/* $Id: view.js 369 2010-11-28 17:47:06Z roland $
- * $Revision: 369 $
- * $HeadURL: svn+ssh://ipenburg.xs4all.nl/srv/svnroot/claudine/trunk/widget/scripts/view.js $
- * $Date: 2010-11-28 18:47:06 +0100 (Sun, 28 Nov 2010) $
- */
-
 (function() {
 
 var UNDEF				= new String('undefined');

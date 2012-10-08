@@ -1,9 +1,3 @@
-/* $Id: controller.js 317 2010-10-13 13:52:08Z roland $
- * $Revision: 317 $
- * $HeadURL: svn+ssh://ipenburg.xs4all.nl/srv/svnroot/claudine/trunk/widget/scripts/controller.js $
- * $Date: 2010-10-13 15:52:08 +0200 (Wed, 13 Oct 2010) $
- */
-
 (function() {
 
 var UNDEF	= new String('undefined');

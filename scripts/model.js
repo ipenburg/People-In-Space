@@ -1,9 +1,3 @@
-/* $Id: model.js 409 2011-01-07 08:05:15Z roland $
- * $Revision: 409 $
- * $HeadURL: svn+ssh://ipenburg.xs4all.nl/srv/svnroot/claudine/trunk/widget/scripts/model.js $
- * $Date: 2011-01-07 09:05:15 +0100 (Fri, 07 Jan 2011) $
- */
-
 (function() {
 
 var UNDEF		= new String('undefined');
