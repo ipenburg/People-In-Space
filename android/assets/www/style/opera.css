@@ -1,0 +1,10 @@
+.flipper, .done {
+	font-weight: normal;
+	font-size: 18px;
+	left: 174px;
+	top: 168px;
+}
+
+.spinner, .spinner div {
+	bottom: 40px;
+}

@@ -1,0 +1,28 @@
+.flipper {
+	bottom: 36px;
+	right: 16px;
+}
+
+.done {
+	bottom: 26px;
+	right: 0;
+	text-align: center;
+	width: 100%;
+}
+
+.done > div > div {
+	vertical-align: top;
+}
+
+.flipper:after, .done:after, .info .flag:before, .info .flag:after {
+	content: '';
+}
+
+.back {
+	background-image: url("../images/bg_208x208_shadow_flipped.png");
+}
+
+.spinner, .spinner div {
+	bottom: 40px;
+}
+

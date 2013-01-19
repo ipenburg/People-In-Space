@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+	network="public" dockable="yes"
+	height="208" width="208"
+	id="http://www.xs4all.nl/~ipenburg/widgets/people-in-space"
+	version="1.4"
+>
+    <widgetname>People in Space</widgetname>
+  	<name>People in Space</name>  
+    <description>Stay updated on the number of people in space right now.</description>
+    <icon width="16" height="16">images/icon_16.png</icon>
+    <icon width="32" height="32">images/icon_32.png</icon>
+    <icon width="64" height="64">images/icon_64.png</icon>
+    <icon width="128" height="128">images/icon_128.png</icon>
+    <icon src="images/icon_128.png"/>
+    <width>208</width>
+    <height>208</height>
+	<license>CC-BY-SA</license>
+    <author>
+		<name>Roland van Ipenburg</name>
+		<email>ipenburg@xs4all.nl</email>
+		<link>http://www.xs4all.nl/~ipenburg/widgets/people-in-space/</link>
+		<organization>Roland van Ipenburg</organization>
+    </author>
+  	<author>Roland van Ipenburg</author>  
+    <id>
+		<host>www.xs4all.nl</host>
+		<name>~/ipenburg/widgets/people-in-space</name>
+		<revised>2012-10-11T19:05:29Z</revised>
+    </id>
+    <security>
+	<access>
+	    <protocol>http</protocol>
+	    <host>www.xs4all.nl</host>
+	    <port>80</port>
+	</access>
+	<access>
+	    <protocol>http</protocol>
+	    <host>feeds.feedburner.com</host>
+	    <port>80</port>
+	</access>
+	<access>
+	    <protocol>http</protocol>
+	    <host>www.howmanypeopleareinspacerightnow.com</host>
+	    <port>80</port>
+	</access>
+	<access>
+	    <protocol>http</protocol>
+	    <host>grin.hq.nasa.gov</host>
+	    <port>80</port>
+	</access>
+	<content plugins="no" />
+    </security>
+    <access origin="http://www.xs4all.nl"/>  
+    <access origin="http://feeds.feedburner.com"/>  
+</widget>
