@@ -12,7 +12,7 @@ function prx(url) {
 	return url;
 }
 
-var PROPS = prx("http://www.xs4all.nl/~ipenburg/widgets/people-in-space/properties.xml");
+var PROPS = prx("http://ipenburg.home.xs4all.nl/widgets/people-in-space/properties.xml");
 var DIV				= new String('div').toString();
 var TXT				= new String('text');
 var HTML			= new String('html');
@@ -45,14 +45,14 @@ PeopleInSpace = function() {
 			}
 			self.config = xml;
 			self.situation = new PeopleInSpaceSituation({
-				url: prx(self.config.getElement('url').get(TXT) ),
+				url: prx(self.config.getElement('url').textContent ),
 				template: new Template(self.config.getElement(TEMPLATE))
 			});
 			self._ready = true;
 			if (self._running != true) {
 				self.start();
 			}
-			_initialize.delay(parseInt(self.config.getElement(CONFIG).get(TXT), RADIX));
+			_initialize.delay(parseInt(self.config.getElement(CONFIG).textContent, RADIX));
 		}
 
 		cb_ajax_start = function() {
@@ -87,7 +87,7 @@ PeopleInSpace = function() {
 
 	var cb_tick = function() {
 		self.situation.get_situation(cf_cb_situation(), cb_ajax_stop, cb_ajax_start);
-		arguments.callee.delay(parseInt(self.config.getElement(REFRESH).get(TXT), RADIX));
+		arguments.callee.delay(parseInt(self.config.getElement(REFRESH).textContent, RADIX));
 	}
 
 	this._start = function() {
