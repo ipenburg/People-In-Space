@@ -41,8 +41,8 @@ PeopleInSpaceView = function(obj) {
 	var DONE_BUTTON			= new String("Done");
 	var COPYRIGHT			= new String("Copyright");
 	var APP_ATTRIBUTION		= new String(
-		loc('Widget').concat(
-		' CC-BY-SA <a href="http://www.xs4all.nl/~ipenburg/" onclick="widget.openURL(this.href); return false;">Roland&nbsp;van&nbsp;Ipenburg &lt;ipenburg@xs4all.nl&gt;</a>'
+		loc('App').concat(
+		' CC-BY-SA <a href="http://ipenburg.home.xs4all.nl/" onclick="widget.openURL(this.href); return false;">Roland&nbsp;van&nbsp;Ipenburg &lt;ipenburg@xs4all.nl&gt;</a>'
 	));
 	var DATA_ATTRIBUTION	= new String(
 		new String(loc('Concept &amp; data by')).concat(
