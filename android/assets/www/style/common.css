@@ -10,7 +10,7 @@ body {
     -webkit-user-select: none;
 	background-image: url("../images/bg.jpg");
 	background-position: 50% 0;
-	-webkit-background-size: cover;
+	-webkit-background-size: 320px 320px;
 }
 
 body, a {
@@ -202,6 +202,14 @@ ul li {
 
 .about a:hover {
 	text-decoration: underline;
+}
+
+@media (min-device-width: 320px) {
+
+	body {
+		-webkit-background-size: cover;
+	}
+
 }
 
 @media (-webkit-min-device-pixel-ratio: 1.5) {
