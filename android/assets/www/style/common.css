@@ -8,7 +8,7 @@ body {
     -webkit-touch-callout: none;
     -webkit-text-size-adjust: none;
     -webkit-user-select: none;
-	background-image: url("../images/bg.jpg");
+	background-image: url("../images/bg_320.jpg");
 	background-position: 50% 0;
 	-webkit-background-size: 320px 320px;
 }
@@ -207,6 +207,7 @@ ul li {
 @media (min-device-width: 320px) {
 
 	body {
+		background-image: url("../images/bg.jpg");
 		-webkit-background-size: cover;
 	}
 
