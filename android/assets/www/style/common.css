@@ -33,7 +33,6 @@ body, p, div {
 }
 
 .initial, .front, .back {
-	position: relative;
 	width: 208px;
 	height: 208px;
 	margin: auto;
@@ -46,25 +45,19 @@ body, p, div {
  
 .flipper, .done {
 	font-size: 16px;
-	position: fixed;
+	position: absolute;
 	display: block;
 	text-decoration: none;
-	right: 18px;
-	bottom: 22px;
-	width: 17px;
-	color: rgba(255, 255, 255, .7);
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: auto;
+	height: auto;
 }
 
 body:hover .flipper, body:hover .done {
 	color: rgba(255, 255, 255, .9);
-}
-
-.flipper:after {
-	content: '\2727';
-}
-
-.done:after {
-	content: '\00ab';
 }
 
 .info, .about {
