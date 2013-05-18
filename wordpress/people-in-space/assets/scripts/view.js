@@ -1,5 +1,6 @@
 (function() {
 
+var CLASS_ID			= new String('PeopleInSpaceWidget');
 var UNDEF				= new String('undefined');
 var EMPTY				= new String('');
 var TXT					= new String('text');
@@ -9,12 +10,14 @@ var STRINGS				= new String('.lproj/scripts/strings.js');
 var DASHBOARDCLIENT		=
 	typeof widget != UNDEF && /AppleWebKit\//.test(navigator.userAgent);
 
+/*
 new Element('script', {
 	src: navigator.language.concat(STRINGS).replace(
 		DASHBOARDCLIENT ? /.*?\// : /.*?-/, EMPTY
 	),
 	charset: 'utf-8'
 }).inject(document.getElement('head'));
+*/
 
 function loc(key) {
 	try {
@@ -288,8 +291,8 @@ PeopleInSpaceView = function(obj) {
 			transFader.pause();
 		}
 		paint_back();
-		document.getElement(DOT.concat(FRONT)).setStyle('display', 'none');
-		document.getElement(DOT.concat(BACK)).setStyle('display', 'block');
+		document.getElement(DOT.concat(CLASS_ID, SPACE, DOT, FRONT)).setStyle('display', 'none');
+		document.getElement(DOT.concat(CLASS_ID, SPACE, DOT, BACK)).setStyle('display', 'block');
 		if (window.widget && widget.performTransition) {
 			setTimeout("widget.performTransition()", 0);
 		}
@@ -299,13 +302,13 @@ PeopleInSpaceView = function(obj) {
 		if (window.widget && widget.prepareForTransition) {
 			widget.prepareForTransition("ToFront");
 		}
-		document.getElement(DOT.concat(BACK)).setStyle('display', 'none');
+		document.getElement(DOT.concat(CLASS_ID, SPACE, DOT, BACK)).setStyle('display', 'none');
 		if (typeof transFader != UNDEF) {
 			transFader.setFadeTime(FADE_TIME);
 			transFader.delay = FADE_DELAY;
 		}
-		document.getElement(DOT.concat(FRONT)).setStyle('display', 'block');
-		document.getElement(DOT.concat(BACK)).empty();
+		document.getElement(DOT.concat(CLASS_ID, SPACE, DOT, FRONT)).setStyle('display', 'block');
+		document.getElement(DOT.concat(CLASS_ID, SPACE, DOT, BACK)).empty();
 		if (typeof transFader != UNDEF) {
 			transFader.resume();
 		}

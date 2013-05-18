@@ -17,6 +17,7 @@ var DIV				= new String('div').toString();
 var TXT				= new String('text');
 var HTML			= new String('html');
 var BODY			= new String('body');
+var CLASS_ID		= new String('PeopleInSpaceWidget');
 var CONFIG			= new String('config > interval');
 var REFRESH			= new String('refresh > interval');
 var TEMPLATE		= new String('template > div');
@@ -35,7 +36,8 @@ PeopleInSpace = function() {
 	var remoted = {
 		props:	new Number(0)
 	};
-	self.view = new PeopleInSpaceView(document.getElement(BODY));
+	var wp = document.getElement('div.'.concat(CLASS_ID) );
+	self.view = new PeopleInSpaceView(wp ? wp : document.getElement(BODY) );
 
 	function _initialize() {
 

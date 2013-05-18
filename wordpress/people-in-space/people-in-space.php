@@ -68,9 +68,9 @@ class PeopleInSpaceWidget extends WP_Widget {
 				(($i > 1) ? array($handle_base . ($i - 1)) : array())
 			);
 		}
-		#add_action( 'wp_enqueue_scripts',
-		#	create_function( '', 'wp_enqueue_style( "PeopleInSpaceWidget_style_" );' )
-		#);
+		add_action( 'wp_enqueue_scripts',
+			create_function( '', 'wp_enqueue_style( "PeopleInSpaceWidget_style_" );' )
+		);
 
 		$res = $xpath->query('//script/@src');
 		$handle_base = $WIDGET_ID . '_script_';
@@ -82,9 +82,9 @@ class PeopleInSpaceWidget extends WP_Widget {
 				(($i > 1) ? array($handle_base . ($i - 1)) : array())
 			);
 		}
-		#add_action( 'wp_enqueue_scripts',
-		#	create_function( '', 'wp_enqueue_script( "PeopleInSpaceWidget_script_" );' )
-		#);
+		add_action( 'wp_enqueue_scripts',
+			create_function( '', 'wp_enqueue_script( "PeopleInSpaceWidget_script_" );' )
+		);
 
 		if ($pis) {
 		    $this->html .= $pis;
@@ -96,7 +96,7 @@ class PeopleInSpaceWidget extends WP_Widget {
 				$this->html .= $res->item(0)->nodeValue;
 			}
 		}
-		$this->html = '<div class="wp-' . $WIDGET_ID . '">' .
+		$this->html = '<div class="' . $WIDGET_ID . ' initial">' .
 			$this->html . '</div>';
 
 	}
