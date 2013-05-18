@@ -96,7 +96,7 @@ class PeopleInSpaceWidget extends WP_Widget {
 				$this->html .= $res->item(0)->nodeValue;
 			}
 		}
-		$this->html = '<div class="' . $WIDGET_ID . ' initial">' .
+		$this->html = '<div class="' . $WIDGET_ID . ' initial" data-count="' . $pis . '">' .
 			$this->html . '</div>';
 
 	}

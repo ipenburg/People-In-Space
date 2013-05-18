@@ -21,6 +21,7 @@ var CLASS_ID		= new String('PeopleInSpaceWidget');
 var CONFIG			= new String('config > interval');
 var REFRESH			= new String('refresh > interval');
 var TEMPLATE		= new String('template > div');
+var DOT				= new String('.');
 
 Template = function(xsl) {
 	this.xsl = xsl;
@@ -36,7 +37,7 @@ PeopleInSpace = function() {
 	var remoted = {
 		props:	new Number(0)
 	};
-	var wp = document.getElement('div.'.concat(CLASS_ID) );
+	var wp = document.getElement(DIV.concat(DOT, CLASS_ID) );
 	self.view = new PeopleInSpaceView(wp ? wp : document.getElement(BODY) );
 
 	function _initialize() {
@@ -72,6 +73,12 @@ PeopleInSpace = function() {
 		if (!wp) {
 			new Request({method: 'get', url: PROPS, onSuccess: cb_props}).send();
 		}
+		else {
+			self.situation = new PeopleInSpaceSituation({
+				amount: wp.getAttribute('data-count')
+			});
+			self.situation.get_situation(cf_cb_situation(), cb_ajax_stop, cb_ajax_start);
+		}
 
 	}
 
@@ -95,9 +102,7 @@ PeopleInSpace = function() {
 	}
 
 	this._start = function() {
-		if (!wp) {
-			setTimeout(cb_tick, 0); 
-		}
+		setTimeout(cb_tick, 0); 
 	}
 
 	this._args = arguments;

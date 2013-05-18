@@ -8,6 +8,7 @@ PeopleInSpaceSituation = function(obj) {
 
 	this.url	= new String();
 	this.template = new Template();
+	this.amount = new String();
 
 	for (var p in obj) {
 		if (typeof this[p] != UNDEF) {
@@ -24,12 +25,19 @@ PeopleInSpaceSituation = function(obj) {
 
 		if (typeof XSLTProcessor != UNDEF && !OPERA_WIN) {
 			xslt = new XSLTProcessor();
-			xslt.importStylesheet(self.template.xsl);
+			if (self.template.xsl) {
+				xslt.importStylesheet(self.template.xsl);
+			}
 		}
 
-		cb_data = function(txt, xml) {
+		cb_data = function(txt, xml, amount) {
 			var fragment;
-			if (xml && xslt) {
+			if (amount) {
+				fragment = "<div class='amount'>".concat(amount, "</div><div class='location'></div>");
+				fragment = new Element(DIV).set('html', fragment);
+				fragment = document.createDocumentFragment().appendChild(fragment);
+			}
+			else if (xml && xslt) {
 				fragment = xslt.transformToFragment(xml, document);
 			}
 			else {
@@ -57,12 +65,17 @@ PeopleInSpaceSituation = function(obj) {
 			}
 		}
 
-		new Request({method: 'get', url: self.url,
-			onSuccess	: cb_data,
-			onComplete	: cb_complete,
-			onRequest	: cb_request,
-			noCache		: true
-		}).send();
+		if (self.amount) {
+			cb_data(null, null, self.amount);
+		}
+		else {
+			new Request({method: 'get', url: self.url,
+				onSuccess	: cb_data,
+				onComplete	: cb_complete,
+				onRequest	: cb_request,
+				noCache		: true
+			}).send();
+		}
 
 	}
 }

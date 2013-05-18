@@ -127,32 +127,32 @@ PeopleInSpaceView = function(obj) {
 	}
 
 	this.refresh = function(situation) {
-		self.props.container.getElement(DOT.concat(CLASS_ID, SPACE, DOT, PIPE)).empty();
-		situation.inject(self.props.container.getElement(DOT.concat(CLASS_ID, SPACE, DOT, PIPE)));
+		self.props.container.getElement(DOT.concat(PIPE)).empty();
+		situation.inject(self.props.container.getElement(DOT.concat(PIPE)));
 	}
 
 	function transform_amount() {
 		if (self.props.container.getElement(
-			DOT.concat(CLASS_ID, SPACE, DOT, PIPE)).getElement(DIV).childNodes.length == 0
+			DOT.concat(PIPE)).getElement(DIV).childNodes.length == 0
 		) {
 			return;
 		}
 		var amount = new Number(self.props.container.getElement(
-			DOT.concat(CLASS_ID, SPACE, DOT, PIPE)).getElement(DIV).getElement(DIV).get(TXT));
+			DOT.concat(PIPE)).getElement(DIV).getElement(DIV).get(TXT));
 		var current = self.props.container.getElement(
-			DOT.concat(CLASS_ID, SPACE, DOT, INFO)).getElements(DIV).length;
+			DOT.concat(INFO)).getElements(DIV).length;
 		for (var i = 0; i <= LIMIT; i++) {
 			// Non-existing to be filled slot:
 			var mutate = function() {};
 			if (i <= amount && i > current) {
 				mutate = function() {
-					new Element(DIV).inject(self.props.container.getElement(DOT.concat(CLASS_ID, SPACE, DOT, INFO)));
+					new Element(DIV).inject(self.props.container.getElement(DOT.concat(INFO)));
 				}
 			}
 			// Existing redundant slot:
 			else if (i > amount && i <= current) {
 				mutate = function() {
-					self.props.container.getElement(DOT.concat(CLASS_ID, SPACE, DOT, INFO)).getElement(DIV).destroy();
+					self.props.container.getElement(DOT.concat(INFO)).getElement(DIV).destroy();
 				}
 			}
 			mutate.delay(DELAY * i);
