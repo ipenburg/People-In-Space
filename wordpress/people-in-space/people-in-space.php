@@ -96,13 +96,15 @@ class PeopleInSpaceWidget extends WP_Widget {
 				$this->html .= $res->item(0)->nodeValue;
 			}
 		}
+		$this->html = '<div class="wp-' . $WIDGET_ID . '">' .
+			$this->html . '</div>';
 
 	}
 
 	public function widget($args, $instance) {
-	    echo $before_widget;
-		echo $this->html;
-		echo $after_widget;
+	    echo $before_widget .
+			$this->html .
+			$after_widget;
 	}
 										   
 }
