@@ -1,0 +1,11 @@
+v plugin_dir_path suddenly doesn't exist when used in a class. That's because
+  when the class is compiled the function isn't yet available.
+v Read in the HTML snippet from a seperate file
+v Make DOMDocument uitput just the div we need
+- How much of the original widget can we keep? Or should we create a much
+  simpler derivate? We now load all our assets, but that borks the whole of
+  WordPress because it assumes we can modify the body.
+- Put a wrapper around the widget with a unique classname
+- Use that classname in the body of the widget as well to sync it
+- Get the value from upstream
+- Hook in the CSS and JS
