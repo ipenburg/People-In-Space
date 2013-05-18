@@ -69,7 +69,9 @@ PeopleInSpace = function() {
 			}
 		}
 
-		new Request({method: 'get', url: PROPS, onSuccess: cb_props}).send();
+		if (!wp) {
+			new Request({method: 'get', url: PROPS, onSuccess: cb_props}).send();
+		}
 
 	}
 
@@ -93,7 +95,9 @@ PeopleInSpace = function() {
 	}
 
 	this._start = function() {
-		setTimeout(cb_tick, 0); 
+		if (!wp) {
+			setTimeout(cb_tick, 0); 
+		}
 	}
 
 	this._args = arguments;

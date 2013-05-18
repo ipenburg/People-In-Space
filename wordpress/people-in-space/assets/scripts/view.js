@@ -127,32 +127,32 @@ PeopleInSpaceView = function(obj) {
 	}
 
 	this.refresh = function(situation) {
-		self.props.container.getElement(DOT.concat(PIPE)).empty();
-		situation.inject(self.props.container.getElement(DOT.concat(PIPE)));
+		self.props.container.getElement(DOT.concat(CLASS_ID, SPACE, DOT, PIPE)).empty();
+		situation.inject(self.props.container.getElement(DOT.concat(CLASS_ID, SPACE, DOT, PIPE)));
 	}
 
 	function transform_amount() {
 		if (self.props.container.getElement(
-			DOT.concat(PIPE)).getElement(DIV).childNodes.length == 0
+			DOT.concat(CLASS_ID, SPACE, DOT, PIPE)).getElement(DIV).childNodes.length == 0
 		) {
 			return;
 		}
 		var amount = new Number(self.props.container.getElement(
-			DOT.concat(PIPE)).getElement(DIV).getElement(DIV).get(TXT));
+			DOT.concat(CLASS_ID, SPACE, DOT, PIPE)).getElement(DIV).getElement(DIV).get(TXT));
 		var current = self.props.container.getElement(
-			DOT.concat(INFO)).getElements(DIV).length;
+			DOT.concat(CLASS_ID, SPACE, DOT, INFO)).getElements(DIV).length;
 		for (var i = 0; i <= LIMIT; i++) {
 			// Non-existing to be filled slot:
 			var mutate = function() {};
 			if (i <= amount && i > current) {
 				mutate = function() {
-					new Element(DIV).inject(self.props.container.getElement(DOT.concat(INFO)));
+					new Element(DIV).inject(self.props.container.getElement(DOT.concat(CLASS_ID, SPACE, DOT, INFO)));
 				}
 			}
 			// Existing redundant slot:
 			else if (i > amount && i <= current) {
 				mutate = function() {
-					self.props.container.getElement(DOT.concat(INFO)).getElement(DIV).destroy();
+					self.props.container.getElement(DOT.concat(CLASS_ID, SPACE, DOT, INFO)).getElement(DIV).destroy();
 				}
 			}
 			mutate.delay(DELAY * i);
@@ -235,8 +235,8 @@ PeopleInSpaceView = function(obj) {
 				'</div>',
 				'<div class="', BACK, '"></div>',
 				'<div class="', PIPE, '"></div>',
-				($$('.cappalmasshared').length == 0 )
-					? EMPTY.concat('<div class="cappalmasshared">',
+				($$('.peopleinspaceshared').length == 0 )
+					? EMPTY.concat('<div class="peopleinspaceshared">',
 						'<div class="', SPINNER, '"></div></div>'
 					)
 					: EMPTY
@@ -245,8 +245,8 @@ PeopleInSpaceView = function(obj) {
 		add_spinner();
 		if (DASHBOARDCLIENT) {
 			flipper = new AppleInfoButton(
-				document.getElement(DOT.concat(FLIPPER)),
-				document.getElement(DOT.concat(FRONT)),
+				document.getElement(DOT.concat(CLASS_ID, SPACE, DOT, FLIPPER)),
+				document.getElement(DOT.concat(CLASS_ID, SPACE, DOT, FRONT)),
 				'white', 'white',
 				show_back
 			);
@@ -271,7 +271,7 @@ PeopleInSpaceView = function(obj) {
 		);
 		if (DASHBOARDCLIENT) {
 			glassButton = new AppleGlassButton(
-				document.getElement(DOT.concat(DONE)), loc(DONE_BUTTON), show_front
+				document.getElement(DOT.concat(CLASS_ID, SPACE, DOT, DONE)), loc(DONE_BUTTON), show_front
 			);
 		}
 		else {
@@ -325,7 +325,7 @@ PeopleInSpaceView = function(obj) {
 		insert_css(STYLE_PATH.concat(OPERA_STYLE));
 	}
 
-	document.getElement('body').removeClass(INITIAL);
+	document.getElement(DOT.concat(CLASS_ID)).removeClass(INITIAL);
 	fullscreen();
 
 	paint();
@@ -338,14 +338,14 @@ PeopleInSpaceView = function(obj) {
 
 	if (document.addEventListener) {
 		// Workaround for broken removeEventListener:
-		if (!document.getElement('body').hasClass(LISTENING)) {
+		if (!document.getElement(DOT.concat(CLASS_ID)).hasClass(LISTENING)) {
 			self.props.container.addEventListener(
 				'DOMNodeInserted', varnish, false
 			);
 			self.props.container.addEventListener(
 				'DOMNodeRemoved', varnish, false
 			);
-			document.getElement('body').addClass(LISTENING);
+			document.getElement(DOT.concat(CLASS_ID)).addClass(LISTENING);
 		}
 	}
 
