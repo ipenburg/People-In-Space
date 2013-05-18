@@ -17,6 +17,7 @@ class PeopleInSpaceWidget extends WP_Widget {
 		$WIDGET_ID = 'PeopleInSpaceWidget';
 		$ASSETS = 'assets/';
 		$INDEX = 'index.html';
+		$CONTROLLER = 'scripts/controller.js';
 
 		parent::__construct(
 		 	$WIDGET_ID,
@@ -31,9 +32,29 @@ class PeopleInSpaceWidget extends WP_Widget {
 		define( 'PLUGIN_URL', plugin_dir_url(__FILE__) );
 		define( 'ASSETS',  $ASSETS);
 		define( 'INDEX',  PLUGIN_PATH . ASSETS . $INDEX);
+		define( 'CONTROLLER',  PLUGIN_PATH . ASSETS . $CONTROLLER);
 
 		$WIDGET_ID = 'PeopleInSpaceWidget';
     	extract($args, EXTR_SKIP);
+
+		$controller = file_get_contents(CONTROLLER);
+		$props_url = preg_replace('/.*var\s+PROPS\s+=\s+prx\("(.*?)".*/is', '$1', $controller);
+		$props = file_get_contents($props_url);
+		$dom = DOMDocument::loadXML($props);
+		$xpath = new DOMXpath($dom);
+
+		$res = $xpath->query('//url');
+		for ($i = 0; $i < $res->length; $i++) {
+			$feed_url = $res->item($i)->nodeValue;
+			$feed = file_get_contents($feed_url);
+			$dom = DOMDocument::loadXML($feed);
+			$xpath = new DOMXpath($dom);
+			$rss = $xpath->query('/rss/channel/item/title');
+			for ($j = 0; $j < $rss->length; $j++) {
+				$pis = $rss->item($j)->nodeValue;
+			}
+		}
+
 		$dom = DOMDocument::loadHTMLFile(INDEX);
 		$xpath = new DOMXpath($dom);
 
@@ -65,9 +86,15 @@ class PeopleInSpaceWidget extends WP_Widget {
 		#	create_function( '', 'wp_enqueue_script( "PeopleInSpaceWidget_script_" );' )
 		#);
 
-		$res = $xpath->query('//body');
-		if ($res->length > 0) {
-		    $this->html .= $res->item(0)->nodeValue;
+		if ($pis) {
+		    $this->html .= $pis;
+		}
+		else {
+			$res = $xpath->query('//body');
+			if ($res->length > 0) {
+				# TODO: return the tags as well:
+				$this->html .= $res->item(0)->nodeValue;
+			}
 		}
 
 	}
