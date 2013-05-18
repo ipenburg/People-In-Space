@@ -5,7 +5,14 @@ v Make DOMDocument uitput just the div we need
 - How much of the original widget can we keep? Or should we create a much
   simpler derivate? We now load all our assets, but that borks the whole of
   WordPress because it assumes we can modify the body.
-- Put a wrapper around the widget with a unique classname
-- Use that classname in the body of the widget as well to sync it
-- Get the value from upstream
-- Hook in the CSS and JS
+v Put a wrapper around the widget with a unique classname,
+  PeopleInSpaceWidget
+v Use that to detect WordPress from the script.
+v Use that classname in the body of the widget as well to sync it
+v get the PROPS URL from assets/scripts/controller.js
+v Get the value from upstream
+v Hook in the CSS and JS
+- Cache the value in WordPress
+- Add override value as widget parameter (also for testing)
+v Bypass cross-domain XHR by putting the result with PHP in the HTML already.
+  The model just fills the pipe.

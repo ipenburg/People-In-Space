@@ -5,6 +5,7 @@
 	max-height: 208px;
 	margin: 0;
 	background-color: transparent;
+	text-shadow: none;
 }
 
 .PeopleInSpaceWidget, .PeopleInSpaceWidget a {
@@ -251,4 +252,10 @@ body.PeopleInSpaceWidget.initial, body.PeopleInSpaceWidget .front, body.PeopleIn
 .PeopleInSpaceWidget .amount8 div,
 .PeopleInSpaceWidget .amount9 div {
 	background-size: 30px 53px;
+}
+
+.sidebar.widget-area .PeopleInSpaceWidget ul li {
+	paddin-bottom: 0;
+	border-bottom: none;
+	margin-bottom: 0;
 }
